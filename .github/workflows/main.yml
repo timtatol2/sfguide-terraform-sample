@@ -10,7 +10,7 @@ jobs:
   snowflake-terraform-demo:
     name: "Snowflake Terraform  Demo Job"
     runs-on: ubuntu-latest
-steps:
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -32,36 +32,36 @@ steps:
          SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION }}
          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
     - name: Terraform Plan
-       if: github.event_name == 'pull_request'
+      if: github.event_name == 'pull_request'
       run: terraform plan -no-color -input=false
       continue-on-error: true
                
-     - name: Update Pull Request
-       uses: actions/github-script@6
-        if: github.event_name == 'pull_request'
-        env:
-         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
-        with:
-         github-token: ${{ secrets.GITHUB_TOKEN }}
-         script: |
-           const output = #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
-           #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
-           #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
-           #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
+    - name: Update Pull Request
+      uses: actions/github-script@6
+      if: github.event_name == 'pull_request'
+      env:
+        PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+         const output = #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+         #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+         #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+         #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
 
-           <details><summary>Show Plan</summary>
+         <details><summary>Show Plan</summary>
          
-           \`\`\`\n
-           ${process.env.PLAN}
-           \`\`\`
-           </details>
-           *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
-            github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: output
-      })
+         \`\`\`\n
+         ${process.env.PLAN}
+         \`\`\`
+         </details>
+         *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+         github.rest.issues.createComment({
+         issue_number: context.issue.number,
+         owner: context.repo.owner,
+         repo: context.repo.repo,
+         body: output
+         })
       # On push to main, build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
