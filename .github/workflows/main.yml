@@ -25,7 +25,7 @@ steps:
 
     - name: terraform plan
       id: plan
-       env:
+      env:
          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
          SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
