@@ -8,8 +8,12 @@ terraform {
 }
 
 provider "snowflake" {
-  alias = "sys_admin"
-  role  = "SYSADMIN"
+username = "Sunmi"
+password = "Sunmilola1"
+account  = "tm21067"
+region   = "ca-central-1.aws"
+alias    = "sys_admin"
+role     = "SYSADMIN"
 }
 
 resource "snowflake_database" "db" {
