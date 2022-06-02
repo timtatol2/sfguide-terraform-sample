@@ -8,7 +8,7 @@ on:
       
 jobs:
   snowflake-terraform-demo:
-    name: "Snowflake Terraform  Demo Job"
+    name: "Snowflake Terraform Demo Job"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
