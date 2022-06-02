@@ -72,7 +72,7 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Terraform destroy
-       env:
+      env:
         SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
         SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
         SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
