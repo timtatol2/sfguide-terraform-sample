@@ -19,14 +19,15 @@ jobs:
           terraform_version: 1.0.10
 
       - name: Terraform Init
-        id: init
+        id: Init
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-	  SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION}}
-        run: terraform init
-      
-      - name: Terraform plan
+	  SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION }}
+        run:|
+	    terraform Init
+
+      - name: Terraform Plan
         id: plan
         run: terraform plan
         
