@@ -62,14 +62,14 @@ jobs:
          })
       # On push to main, build or change infrastructure according to Terraform configuration files
    # - name: Terraform Apply
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      env:
-        SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-        SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-        SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
-        SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION }}
-        SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-    #  run: terraform apply -auto-approve
+   #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+   #   env:
+   #     SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+   #     SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+   #     SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
+   #     SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION }}
+   #     SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+   #  run: terraform apply -auto-approve
       
     - name: Terraform destroy
       env:
