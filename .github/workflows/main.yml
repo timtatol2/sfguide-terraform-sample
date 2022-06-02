@@ -18,11 +18,11 @@ jobs:
         with: 
           terraform_version: 1.0.10
 
-      - name: Terraform Init
+      - name: terraform init
         id: init
-        run: terraform Init
+        run: terraform init
 
-      - name: Terraform Plan
+      - name: terraform plan
         id: plan
         run: terraform plan
         
