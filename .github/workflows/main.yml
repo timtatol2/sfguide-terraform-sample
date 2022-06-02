@@ -23,7 +23,7 @@ jobs:
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-	         SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION}}
+	  SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION}}
         run: terraform init
       
       - name: Terraform plan
