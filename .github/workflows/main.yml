@@ -49,18 +49,18 @@ jobs:
            #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
            #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
 
-            <details><summary>Show Plan</summary>
+           <details><summary>Show Plan</summary>
          
-         \`\`\`\n
-         ${process.env.PLAN}
-         \`\`\`
-         </details>
-         *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
-         github.rest.issues.createComment({
-          issue_number: context.issue.number,
-          owner: context.repo.owner,
-          repo: context.repo.repo,
-          body: output
+           \`\`\`\n
+           ${process.env.PLAN}
+           \`\`\`
+           </details>
+           *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+            github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
       })
       # On push to main, build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
