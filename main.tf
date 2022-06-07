@@ -18,13 +18,13 @@ role     = "SYSADMIN"
 
 resource "snowflake_database" "db" {
   provider = snowflake.sys_admin
-  name     = "TF_DEMO_2"
+  name     = "TF_DEMO_3"
 }
 
 resource "snowflake_warehouse" "warehouse" {
   provider       = snowflake.sys_admin
-  name           = "TF_DEMO_2"
-  warehouse_size = "large"
+  name           = "TF_DEMO_3"
+  warehouse_size = "small"
 
   auto_suspend = 60
 }
@@ -36,7 +36,7 @@ provider "snowflake" {
 
 resource "snowflake_role" "role" {
   provider = snowflake.security_admin
-  name     = "TF_DEMO_SVC_ROLE_2"
+  name     = "TF_DEMO_SVC_ROLE_3"
 }
 
 
@@ -52,7 +52,7 @@ resource "snowflake_database_grant" "grant" {
 resource "snowflake_schema" "schema" {
   provider   = snowflake.sys_admin
   database   = snowflake_database.db.name
-  name       = "TF_DEMO_2"
+  name       = "TF_DEMO_3"
   is_managed = false
 }
 
@@ -84,7 +84,7 @@ resource "tls_private_key" "svc_key" {
 
 resource "snowflake_user" "user" {
   provider          = snowflake.security_admin
-  name              = "tf_demo_user_2"
+  name              = "tf_demo_user_3"
   default_warehouse = snowflake_warehouse.warehouse.name
   default_role      = snowflake_role.role.name
   default_namespace = "${snowflake_database.db.name}.${snowflake_schema.schema.name}"
