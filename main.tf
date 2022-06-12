@@ -36,7 +36,7 @@ provider "snowflake" {
 
 resource "snowflake_role" "role" {
   provider = snowflake.security_admin
-  name     = "TF_DEMO_SVC_ROLE_3"
+  name     = "TF_DEMO_SVC_ROLE_4"
 }
 
 
@@ -52,7 +52,7 @@ resource "snowflake_database_grant" "grant" {
 resource "snowflake_schema" "schema" {
   provider   = snowflake.sys_admin
   database   = snowflake_database.db.name
-  name       = "TF_DEMO_3"
+  name       = "TF_DEMO_4"
   is_managed = false
 }
 
