@@ -74,11 +74,11 @@ jobs:
          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
       run: terraform apply -auto-approve
       
-    #- name: Terraform destroy
-     # env:
-      #  SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-       # SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-        # SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
-        # SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION }}
-        # SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-      # run: terraform destroy -auto-approve
+    - name: Terraform destroy
+      env:
+        SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+        SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USERNAME }}
+        SNOWFLAKE_REGION: ${{ secrets.SNOWFLAKE_REGION }}
+        SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      run: terraform destroy -auto-approve
